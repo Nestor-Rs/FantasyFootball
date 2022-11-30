@@ -1,4 +1,3 @@
-import numpy as np
 import math
 
 class perseptron():
@@ -10,18 +9,14 @@ class perseptron():
 
     def activation(self,x):
         if  math.sin(x)>0.5:
-            return True
+            return 1
+        elif math.sin(x)<-0.5:
+            return -1
         else:
-            return False
+            return 0
 
     def evalution(self):
         data=0
-        for i in range(np.size(self.input)):
+        for i in range(len(self.input)):
             data+=self.input[i]*self.weight[i]
         return self.activation(data)
-        
-input=[3,2,3]
-weight=[3,2,3]
-
-a=perseptron(input,weight)
-print(a.evalution())
