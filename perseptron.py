@@ -4,6 +4,7 @@ class perseptron():
     input=[]
     weight=[]
     points=[]
+    winers=[]
 
     def __init__(self,input,weight):
         self.input=input
@@ -30,7 +31,8 @@ class perseptron():
                 primerLugar=self.points[i]
             elif self.points[i]<primerLugar and self.points[i]>segundoLugar:
                 segundoLugar=self.points[i]
-        return [self.points.index(primerLugar),self.points.index(segundoLugar)]
+        self.winers=[self.points.index(primerLugar),self.points.index(segundoLugar)]
+        return self.winers
 
     def nevoPeso(self,w,obtenido,esperado):
         error=esperado-obtenido
@@ -38,18 +40,10 @@ class perseptron():
         return newW
     
     def aprender(self,esperado):
-        for i in range(50):
+        for i in range(1000):
             self.jugarPartidos()
             w=self.ganadores()
             self.weight[w[0]]=self.nevoPeso(self.weight[w[0]],self.input[w[0]],esperado[0])
             self.weight[w[1]]=self.nevoPeso(self.weight[w[1]],self.input[w[1]],esperado[1])
-            print(self.weight)
-            print(self.points)
-
-
-inp=[1440,1464,1584,1694]
-pesos=[1,1,1,1]
-
-a=perseptron(inp,pesos)
-print(a.weight)
-a.aprender([1694,1584])
+            #print(self.weight)
+            #print(self.points)
