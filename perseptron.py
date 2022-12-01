@@ -1,16 +1,17 @@
 import math
 
 class perseptron():
+    #All data used
     input=[]
     weight=[]
     points=[]
     winers=[]
-
+    #Init class
     def __init__(self,input,weight):
         self.input=input
         self.weight=weight
         self.points=[0,0,0,0]
-
+    #Evaluation for play
     def jugarPartidos(self):
         self.points=[0,0,0,0]
         for i in range(len(self.input)):
@@ -21,7 +22,7 @@ class perseptron():
                     self.points[i]+=1
                 else:
                     self.points[j]+=1
-
+    #Get the two best players
     def ganadores(self):
         primerLugar=0
         segundoLugar=0
@@ -33,12 +34,12 @@ class perseptron():
                 segundoLugar=self.points[i]
         self.winers=[self.points.index(primerLugar),self.points.index(segundoLugar)]
         return self.winers
-
+    #Calcula error and get new weight
     def nevoPeso(self,w,obtenido,esperado):
         error=esperado-obtenido
         newW=w+0.000004*error
         return newW
-    
+    #get a list of values, play and get new weights
     def aprender(self,esperado):
         for i in range(1000):
             self.jugarPartidos()
