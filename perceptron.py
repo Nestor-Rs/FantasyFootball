@@ -1,6 +1,6 @@
 import math
 
-class perseptron():
+class perceptron():
     #All data used
     input=[]
     weight=[]

@@ -1,5 +1,5 @@
 from data import *
-from perseptron import *
+from perceptron import *
 #Neural Netwok List
 octavos=[]
 cuartos=[]
@@ -11,7 +11,7 @@ pesosCuartos=[]
 #Set data to Neural network
 for i in range(len(ranking)):
     print("================= Octavos =================")
-    octavos.append(perseptron(ranking[i],[1,1,1,1]))
+    octavos.append(perceptron(ranking[i],[1,1,1,1]))
     octavos[i].aprender(ganadores[i])
     print(equipoNombre[i][octavos[i].winers[0]])
     print(equipoNombre[i][octavos[i].winers[1]])
@@ -33,7 +33,7 @@ for i in range(0,len(inputCuartos),4):
     for j in range(i,i+4):
         newGroup.append(inputCuartos[j])
         newWeight.append(pesosCuartos[j])
-    cuartos.append(perseptron(newGroup,newWeight))
+    cuartos.append(perceptron(newGroup,newWeight))
 #Play and get winners
 for i in range(len(cuartos)):
     print("================= Cuartos =================")
@@ -58,7 +58,7 @@ for i in range(0,len(inputSemiFinal),4):
     for j in range(i,i+4):
         newGroup.append(inputSemiFinal[j])
         newWeight.append(pesosSemiFinal[j])
-    semifinal.append(perseptron(newGroup,newWeight))
+    semifinal.append(perceptron(newGroup,newWeight))
 #Play and get winners
 for i in range(len(semifinal)):
     print("================= Semi Final =================")
@@ -74,8 +74,8 @@ for i in range(len(semifinal)):
 print()
 
 #=====================================Final============================================
-#Put data to final perseptron
-final=perseptron(inputFinal,pesosFinal)
+#Put data to final perceptron
+final=perceptron(inputFinal,pesosFinal)
 
 print("================= Final =================")
 #Play 
